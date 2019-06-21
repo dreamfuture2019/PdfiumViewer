@@ -1,8 +1,10 @@
 # PdfiumViewer
 
-Apache 2.0 License.
+.NET Core Port from (https://github.com/pvginkel/PdfiumViewer)[https://github.com/pvginkel/PdfiumViewer] 
+(no WinForm Rendering)
 
-[Download from NuGet](http://nuget.org/packages/PdfiumViewer).
+Original License:
+Apache 2.0 License.
 
 ## Introduction
 
@@ -70,10 +72,6 @@ the [PdfiumBuild](https://github.com/pvginkel/PdfiumBuild) project page
 for the location of the output of the build server. The PdfiumViewer specific
 libraries are located in the `PdfiumViewer-...` target directories.
 
-## Bugs
-
-Bugs should be reported through github at
-[http://github.com/pvginkel/PdfiumViewer/issues](http://github.com/pvginkel/PdfiumViewer/issues).
 
 ## License
 
