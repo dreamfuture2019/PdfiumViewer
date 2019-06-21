@@ -1,12 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
    <!-- SonarQube needs this -->
    <ProjectGuid>{438914B6-5D1C-482C-B942-5C0E057EEF6F}</ProjectGuid>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Description>.Net Core Port from https://github.com/pvginkel/PdfiumViewer</Description>
-    <Copyright>Original License https://github.com/jhueppauff/PdfiumViewer/blob/master/LICENSE</Copyright>
+    <Description>.Net Core Port from https://github.com/pvginkel/PdfiumViewer
+
+PDF viewer based on the PDFium project</Description>
+    <Copyright>Original License Pieter van Ginkel © 2012-2015</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Hueppauff.PdfiumViewer.Core</PackageId>
+    <Authors>Pieter van Ginkel</Authors>
+    <PackageTags>netcore</PackageTags>
+     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
