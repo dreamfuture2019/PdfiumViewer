@@ -7,10 +7,10 @@
     <Description>.Net Core Port from https://github.com/pvginkel/PdfiumViewer
 
 PDF viewer based on the PDFium project</Description>
-    <Copyright>Original License Pieter van Ginkel © 2012-2015</Copyright>
+    <Copyright>Original License Pieter van Ginkel © 2012-2015 - Apache 2</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Hueppauff.PdfiumViewer.Core</PackageId>
-    <Authors>Pieter van Ginkel</Authors>
+    <Authors>Pieter van Ginkel, Julian Hüppauff (ported)</Authors>
     <PackageTags>netcore</PackageTags>
      <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
