@@ -1,12 +1,10 @@
-﻿using System;
+﻿using SixLabors.ImageSharp;
+using SixLabors.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Drawing.Printing;
 using System.IO;
-using System.Text;
 
 namespace PdfiumViewer
 {
@@ -93,77 +91,6 @@ namespace PdfiumViewer
                 throw new Win32Exception();
 
             PageSizes = new ReadOnlyCollection<SizeF>(_pageSizes);
-        }
-
-        /// <summary>
-        /// Renders a page of the PDF document to the provided graphics instance.
-        /// </summary>
-        /// <param name="page">Number of the page to render.</param>
-        /// <param name="graphics">Graphics instance to render the page on.</param>
-        /// <param name="dpiX">Horizontal DPI.</param>
-        /// <param name="dpiY">Vertical DPI.</param>
-        /// <param name="bounds">Bounds to render the page in.</param>
-        /// <param name="forPrinting">Render the page for printing.</param>
-        public void Render(int page, Graphics graphics, float dpiX, float dpiY, Rectangle bounds, bool forPrinting)
-        {
-            Render(page, graphics, dpiX, dpiY, bounds, forPrinting ? PdfRenderFlags.ForPrinting : PdfRenderFlags.None);
-        }
-
-        /// <summary>
-        /// Renders a page of the PDF document to the provided graphics instance.
-        /// </summary>
-        /// <param name="page">Number of the page to render.</param>
-        /// <param name="graphics">Graphics instance to render the page on.</param>
-        /// <param name="dpiX">Horizontal DPI.</param>
-        /// <param name="dpiY">Vertical DPI.</param>
-        /// <param name="bounds">Bounds to render the page in.</param>
-        /// <param name="flags">Flags used to influence the rendering.</param>
-        public void Render(int page, Graphics graphics, float dpiX, float dpiY, Rectangle bounds, PdfRenderFlags flags)
-        {
-            if (graphics == null)
-                throw new ArgumentNullException("graphics");
-            if (_disposed)
-                throw new ObjectDisposedException(GetType().Name);
-
-            float graphicsDpiX = graphics.DpiX;
-            float graphicsDpiY = graphics.DpiY;
-
-            var dc = graphics.GetHdc();
-
-            try
-            {
-                if ((int)graphicsDpiX != (int)dpiX || (int)graphicsDpiY != (int)dpiY)
-                {
-                    var transform = new NativeMethods.XFORM
-                    {
-                        eM11 = graphicsDpiX / dpiX,
-                        eM22 = graphicsDpiY / dpiY
-                    };
-
-                    NativeMethods.SetGraphicsMode(dc, NativeMethods.GM_ADVANCED);
-                    NativeMethods.ModifyWorldTransform(dc, ref transform, NativeMethods.MWT_LEFTMULTIPLY);
-                }
-
-                var point = new NativeMethods.POINT();
-                NativeMethods.SetViewportOrgEx(dc, bounds.X, bounds.Y, out point);
-
-                bool success = _file.RenderPDFPageToDC(
-                    page,
-                    dc,
-                    (int)dpiX, (int)dpiY,
-                    0, 0, bounds.Width, bounds.Height,
-                    FlagsToFPDFFlags(flags)
-                );
-
-                NativeMethods.SetViewportOrgEx(dc, point.X, point.Y, out point);
-
-                if (!success)
-                    throw new Win32Exception();
-            }
-            finally
-            {
-                graphics.ReleaseHdc(dc);
-            }
         }
 
         /// <summary>

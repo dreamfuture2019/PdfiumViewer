@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
+﻿using SixLabors.Primitives;
+using System;
 
 #pragma warning disable 1591
 

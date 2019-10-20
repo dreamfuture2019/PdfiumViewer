@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using System.Text;
 using Microsoft.Win32.SafeHandles;
+using SixLabors.Primitives;
 
 namespace PdfiumViewer
 {
